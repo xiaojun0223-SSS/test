@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 const baseImages = [
   'design-12.png',
   'design-13.png',
@@ -10,38 +8,27 @@ const baseImages = [
   'design-19.png',
 ]
 
+const hoverImage = 'design-12-hover.jpg'
+
 // 7 cols × 3 rows = 21 items, fill with baseImages then shuffle
 const images = [...Array(21)].map((_, i) => baseImages[i % baseImages.length])
   .sort(() => Math.random() - 0.5)
 
-// hover image: name-hover.jpg
-function hoverPath(name) {
-  return name.replace(/\.\w+$/, '-hover.jpg')
-}
-
 function GridItem({ img, i }) {
-  const [hoverFailed, setHoverFailed] = useState(false)
-  const alt = hoverPath(img)
-
   return (
-    <div
-      className="group aspect-square overflow-hidden bg-gray-100 cursor-pointer transition-transform duration-300 hover:scale-105 relative"
-    >
+    <div className="group aspect-square overflow-hidden bg-gray-100 cursor-pointer transition-transform duration-300 hover:scale-105 relative">
       {/* Default image */}
       <img
         src={`/images/${img}`}
         alt={`Gallery ${i + 1}`}
         className="w-full h-full object-cover absolute inset-0"
       />
-      {/* Hover image — slides down from top, only if it exists */}
-      {!hoverFailed && (
-        <img
-          src={`/images/${alt}`}
-          alt={`Gallery alt ${i + 1}`}
-          onError={() => setHoverFailed(true)}
-          className="w-full h-full object-cover absolute inset-0 -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-in-out"
-        />
-      )}
+      {/* Hover image — slides down from top */}
+      <img
+        src={`/images/${hoverImage}`}
+        alt={`Gallery alt ${i + 1}`}
+        className="w-full h-full object-cover absolute inset-0 -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-in-out"
+      />
     </div>
   )
 }
