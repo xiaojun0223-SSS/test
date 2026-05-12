@@ -1,0 +1,138 @@
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import FadeIn from '../components/FadeIn'
+
+// ── Work items data ──
+// type: 'small' | 'wide'
+// side: 'left' | 'right' (small images — which side the image is on)
+// text numbers are 01–07, wide items have no number
+
+const workItems = [
+  { type: 'small', side: 'right', num: '01' },
+  { type: 'small', side: 'left',  num: '02' },
+  { type: 'small', side: 'right', num: '03' },
+  { type: 'wide' },
+  { type: 'small', side: 'left',  num: '04' },
+  { type: 'small', side: 'right', num: '05' },
+  { type: 'small', side: 'left',  num: '06' },
+  { type: 'wide' },
+  { type: 'small', side: 'right', num: '07' },
+  { type: 'small', side: 'left',  num: '08' },
+]
+
+/* ── helpers ── */
+function smallSrc(num) {
+  return '/images/design-12-hover.jpg'
+}
+function wideSrc(i) {
+  return '/images/design-12-hover.jpg'
+}
+
+/* ── Small image + text row (image LEFT) ── */
+function WorkSmall({ num }) {
+  return (
+    <div className="flex w-full mb-[90px]" style={{ height: 543 }}>
+      {/* Image block */}
+      <div className="shrink-0 bg-gray-100 overflow-hidden" style={{ width: 595, height: 543 }}>
+        <img
+          src={smallSrc(num)}
+          alt={`Work ${num}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Text block */}
+      <div className="flex-1 relative bg-white" style={{ height: 543 }}>
+        <p className="absolute left-6 bottom-6 text-[#4CAF50] text-sm tracking-widest">
+          {num}
+        </p>
+      </div>
+    </div>
+  )
+}
+// Image RIGHT — text on left, image on right
+function WorkSmallRight({ num }) {
+  return (
+    <div className="flex w-full mb-[90px]" style={{ height: 543 }}>
+      {/* Text block first */}
+      <div className="flex-1 relative bg-white" style={{ height: 543 }}>
+        <p className="absolute left-6 bottom-6 text-[#4CAF50] text-sm tracking-widest">
+          {num}
+        </p>
+      </div>
+
+      {/* Image block */}
+      <div className="shrink-0 bg-gray-100 overflow-hidden" style={{ width: 595, height: 543 }}>
+        <img
+          src={smallSrc(num)}
+          alt={`Work ${num}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  )
+}
+
+/* ── Wide image + text bar ── */
+let wideCount = 0
+function WorkWide() {
+  wideCount++
+  const idx = wideCount
+  return (
+    <div className="w-full mb-[90px]">
+      <div className="w-full bg-gray-100 overflow-hidden" style={{ height: 543 }}>
+        <img
+          src={wideSrc(idx)}
+          alt={`Work wide ${idx}`}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div
+        className="w-full bg-white flex items-center"
+        style={{ height: 104 }}
+      >
+        <p className="text-[#4CAF50] text-sm tracking-widest ml-6">
+          {/* wide text placeholder */}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+/* ── Page ── */
+export default function WorkPage() {
+  wideCount = 0 // reset on each render
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Header active="work" />
+
+      {/* Hero image 1240×571 */}
+      <div className="w-full bg-gray-100 overflow-hidden" style={{ height: 571 }}>
+        <img
+          src="/images/goodnews.jpg"
+          alt="GOOD NEWS"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Work gallery */}
+      {workItems.map((item, i) => {
+        let content
+        let dir = 'up'
+        if (item.type === 'wide') {
+          content = <WorkWide key={i} />
+        } else if (item.side === 'right') {
+          content = <WorkSmallRight key={i} num={item.num} />
+          dir = 'right'
+        } else {
+          content = <WorkSmall key={i} num={item.num} />
+          dir = 'left'
+        }
+        return <FadeIn key={i} dir={dir}>{content}</FadeIn>
+      })}
+
+      <Footer />
+    </div>
+  )
+}

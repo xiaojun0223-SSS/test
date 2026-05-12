@@ -1,17 +1,16 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import DiscoverMore from './components/DiscoverMore'
-import Gallery from './components/Gallery'
-import Footer from './components/Footer'
+import { useState, useEffect } from 'react'
+import HomePage from './pages/HomePage'
+import WorkPage from './pages/WorkPage'
 
 export default function App() {
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <Hero />
-      <DiscoverMore />
-      <Gallery />
-      <Footer />
-    </div>
-  )
+  const [page, setPage] = useState(() => window.location.hash)
+
+  useEffect(() => {
+    const onHashChange = () => setPage(window.location.hash)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  if (page === '#/work') return <WorkPage />
+  return <HomePage />
 }
