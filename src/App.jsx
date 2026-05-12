@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
+import AboutPage from './pages/AboutPage'
 
 export default function App() {
   const [page, setPage] = useState(() => window.location.hash)
@@ -12,5 +13,6 @@ export default function App() {
   }, [])
 
   if (page === '#/work') return <WorkPage />
+  if (page === '#/about') return <AboutPage />
   return <HomePage />
 }

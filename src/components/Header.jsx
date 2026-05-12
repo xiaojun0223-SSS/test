@@ -1,5 +1,6 @@
 export default function Header({ active }) {
   const isWork = active === 'work'
+  const isAbout = active === 'about'
 
   return (
     <header className="flex items-center justify-between px-10 py-6 bg-white">
@@ -16,7 +17,10 @@ export default function Header({ active }) {
         >
           WORK
         </a>
-        <a href="#about" className="inline-block hover:scale-110 transition-transform text-[#4CAF50]">
+        <a
+          href="#/about"
+          className={`inline-block hover:scale-110 transition-transform ${isAbout ? 'text-black' : 'text-[#4CAF50]'}`}
+        >
           ABOUT
         </a>
         <a href="#contact" className="inline-block hover:scale-110 transition-transform text-[#4CAF50]">
