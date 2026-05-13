@@ -1,6 +1,6 @@
 export default function DiscoverMore() {
   return (
-    <section className="flex flex-col items-center py-24">
+    <section className="flex flex-col items-center py-12 md:py-24">
       {/* Thin line */}
       <div className="w-16 border-t border-[#4CAF50] mb-6" />
 

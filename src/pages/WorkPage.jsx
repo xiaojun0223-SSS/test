@@ -31,18 +31,14 @@ function wideSrc(i) {
 /* ── Small image + text row (image LEFT) ── */
 function WorkSmall({ num }) {
   return (
-    <div className="flex w-full mb-[90px]" style={{ height: 543 }}>
-      {/* Image block */}
-      <div className="shrink-0 bg-gray-100 overflow-hidden" style={{ width: 595, height: 543 }}>
-        <img
-          src={smallSrc(num)}
-          alt={`Work ${num}`}
-          className="w-full h-full object-cover"
-        />
+    <div className="flex flex-col lg:flex-row w-full mb-[90px]">
+      {/* Image — aspect-square on mobile, 595×543 on desktop */}
+      <div className="shrink-0 bg-gray-100 overflow-hidden w-full aspect-square lg:w-[595px] lg:h-[543px] lg:aspect-auto">
+        <img src={smallSrc(num)} alt={`Work ${num}`} className="w-full h-full object-cover" />
       </div>
 
-      {/* Text block */}
-      <div className="flex-1 relative bg-white" style={{ height: 543 }}>
+      {/* Text — min height on mobile, 543px on desktop */}
+      <div className="flex-1 relative bg-white min-h-[100px] lg:h-[543px]">
         <p className="absolute left-6 bottom-6 text-[#4CAF50] text-sm tracking-widest">
           {num}
         </p>
@@ -53,21 +49,17 @@ function WorkSmall({ num }) {
 // Image RIGHT — text on left, image on right
 function WorkSmallRight({ num }) {
   return (
-    <div className="flex w-full mb-[90px]" style={{ height: 543 }}>
-      {/* Text block first */}
-      <div className="flex-1 relative bg-white" style={{ height: 543 }}>
+    <div className="flex flex-col lg:flex-row w-full mb-[90px]">
+      {/* Text — min height on mobile, 543px on desktop. Order: after image on mobile, before on desktop */}
+      <div className="flex-1 relative bg-white min-h-[100px] lg:h-[543px] order-2 lg:order-1">
         <p className="absolute left-6 bottom-6 text-[#4CAF50] text-sm tracking-widest">
           {num}
         </p>
       </div>
 
-      {/* Image block */}
-      <div className="shrink-0 bg-gray-100 overflow-hidden" style={{ width: 595, height: 543 }}>
-        <img
-          src={smallSrc(num)}
-          alt={`Work ${num}`}
-          className="w-full h-full object-cover"
-        />
+      {/* Image — aspect-square on mobile, 595×543 on desktop. Order: first on mobile, second on desktop */}
+      <div className="shrink-0 bg-gray-100 overflow-hidden w-full aspect-square lg:w-[595px] lg:h-[543px] lg:aspect-auto order-1 lg:order-2">
+        <img src={smallSrc(num)} alt={`Work ${num}`} className="w-full h-full object-cover" />
       </div>
     </div>
   )
@@ -80,17 +72,14 @@ function WorkWide() {
   const idx = wideCount
   return (
     <div className="w-full mb-[90px]">
-      <div className="w-full bg-gray-100 overflow-hidden" style={{ height: 543 }}>
+      <div className="w-full bg-gray-100 overflow-hidden aspect-video lg:h-[543px]">
         <img
           src={wideSrc(idx)}
           alt={`Work wide ${idx}`}
           className="w-full h-full object-cover"
         />
       </div>
-      <div
-        className="w-full bg-white flex items-center"
-        style={{ height: 104 }}
-      >
+      <div className="w-full bg-white flex items-center min-h-[60px]">
         <p className="text-[#4CAF50] text-sm tracking-widest ml-6">
           {/* wide text placeholder */}
         </p>
@@ -108,7 +97,7 @@ export default function WorkPage() {
       <Header active="work" />
 
       {/* Hero image 1240×571 */}
-      <div className="w-full bg-gray-100 overflow-hidden" style={{ height: 571 }}>
+      <div className="w-full bg-gray-100 overflow-hidden aspect-[1240/571] lg:h-[571px]">
         <img
           src="/images/goodnews.jpg"
           alt="GOOD NEWS"
