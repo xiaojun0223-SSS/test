@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import FadeIn from '../components/FadeIn'
+import ParallaxImage from '../components/ParallaxImage'
 
 const placeholderImg = '/images/design-12-hover.jpg'
 
@@ -47,12 +48,13 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       <Header active="about" />
 
+      <div className="px-4 md:px-10 mt-[50px]">
+
       {/* Hero image 1240×571 */}
-      <div className="w-full bg-gray-100 overflow-hidden aspect-[1240/571] lg:h-[571px]">
-        <img
+      <div className="w-full overflow-hidden aspect-[1240/571] lg:h-[571px]">
+        <ParallaxImage
           src="/images/goodnews.jpg"
           alt="GOOD NEWS"
-          className="w-full h-full object-cover"
         />
       </div>
 
@@ -67,6 +69,7 @@ export default function AboutPage() {
       </FadeIn>
 
       <Footer />
+      </div>
     </div>
   )
 }

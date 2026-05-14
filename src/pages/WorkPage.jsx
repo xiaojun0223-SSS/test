@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import FadeIn from '../components/FadeIn'
+import ParallaxImage from '../components/ParallaxImage'
 
 // ── Work items data ──
 // type: 'small' | 'wide'
@@ -96,16 +97,18 @@ export default function WorkPage() {
     <div className="min-h-screen bg-white">
       <Header active="work" />
 
+      <div className="px-4 md:px-10 mt-[50px]">
+
       {/* Hero image 1240×571 */}
-      <div className="w-full bg-gray-100 overflow-hidden aspect-[1240/571] lg:h-[571px]">
-        <img
+      <div className="w-full overflow-hidden aspect-[1240/571] lg:h-[571px]">
+        <ParallaxImage
           src="/images/goodnews.jpg"
           alt="GOOD NEWS"
-          className="w-full h-full object-cover"
         />
       </div>
 
       {/* Work gallery */}
+      <div className="mt-[20px]">
       {workItems.map((item, i) => {
         let content
         let dir = 'up'
@@ -120,8 +123,10 @@ export default function WorkPage() {
         }
         return <FadeIn key={i} dir={dir}>{content}</FadeIn>
       })}
+      </div>
 
       <Footer />
+      </div>
     </div>
   )
 }

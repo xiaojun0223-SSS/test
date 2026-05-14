@@ -8,10 +8,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header active="home" />
-      <Hero />
-      <DiscoverMore />
-      <Gallery />
-      <Footer />
+      <div className="px-4 md:px-10 mt-[50px]">
+        <Hero />
+        <DiscoverMore />
+        <Gallery />
+        <Footer />
+      </div>
     </div>
   )
 }
