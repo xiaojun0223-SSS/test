@@ -39,7 +39,7 @@ function WorkSmall({ num }) {
 
       {/* Text — min height on mobile, 543px on desktop */}
       <div className="flex-1 relative bg-white min-h-[100px] lg:h-[543px]">
-        <p className="absolute left-6 bottom-6 text-[#4CAF50] text-sm tracking-widest">
+        <p className="absolute left-6 bottom-6 text-[#2D993A] text-sm tracking-widest">
           {num}
         </p>
       </div>
@@ -52,7 +52,7 @@ function WorkSmallRight({ num }) {
     <div className="flex flex-col lg:flex-row w-full mb-[90px]">
       {/* Text — min height on mobile, 543px on desktop. Order: after image on mobile, before on desktop */}
       <div className="flex-1 relative bg-white min-h-[100px] lg:h-[543px] order-2 lg:order-1">
-        <p className="absolute left-6 bottom-6 text-[#4CAF50] text-sm tracking-widest">
+        <p className="absolute left-6 bottom-6 text-[#2D993A] text-sm tracking-widest">
           {num}
         </p>
       </div>
@@ -80,7 +80,7 @@ function WorkWide() {
         />
       </div>
       <div className="w-full bg-white flex items-center min-h-[60px]">
-        <p className="text-[#4CAF50] text-sm tracking-widest ml-6">
+        <p className="text-[#2D993A] text-sm tracking-widest ml-6">
           {/* wide text placeholder */}
         </p>
       </div>
