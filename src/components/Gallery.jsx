@@ -3,18 +3,26 @@ import FadeIn from './FadeIn'
 const baseImages = [
   'design-12.png',
   'design-13.png',
+  'design-14.png',
   'design-15.png',
   'design-16.png',
   'design-17.png',
   'design-18.png',
   'design-19.png',
+  'design-20.png',
+  'design-21.png',
+  'design-22.png',
+  'design-23.png',
+  'design-24.png',
+  'design-25.png',
 ]
 
-const hoverImage = 'design-12-hover.jpg'
+function hoverFor(img) {
+  return img.replace('.png', '-hover.png')
+}
 
-// 7 cols × 3 rows = 21 items, fill with baseImages then shuffle
-const images = [...Array(21)].map((_, i) => baseImages[i % baseImages.length])
-  .sort(() => Math.random() - 0.5)
+// 7 cols × 2 rows = 14 items, one per image, shuffled
+const images = [...baseImages].sort(() => Math.random() - 0.5)
 
 function GridItem({ img, i }) {
   return (
@@ -30,7 +38,7 @@ function GridItem({ img, i }) {
       />
       {/* Hover image — slides down from top */}
       <img
-        src={`/images/${hoverImage}`}
+        src={`/images/${hoverFor(img)}`}
         alt={`Gallery alt ${i + 1}`}
         className="w-full h-full object-cover absolute inset-0 -translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-in-out"
       />
