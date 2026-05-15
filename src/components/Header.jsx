@@ -4,7 +4,7 @@ export default function Header({ active }) {
   const isAbout = active === 'about'
 
   return (
-    <header className="flex items-end justify-between px-4 md:px-10 py-4 md:py-6 bg-white">
+    <header className="flex items-center justify-between px-4 md:px-10 py-4 md:py-6 bg-white">
       {/* Logo */}
       <img
         src="/images/home logo.png"

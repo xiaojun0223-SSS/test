@@ -19,7 +19,7 @@ export default function SplashScreen({ onDone }) {
       <img
         src="/images/open logo.png"
         alt=""
-        className="h-[120px] w-auto transition-all duration-[600ms] ease-out"
+        className="h-[80px] max-w-[70vw] md:h-[120px] md:max-w-none w-auto object-contain transition-all duration-[600ms] ease-out"
         style={{
           transform: phase === 'exit' ? 'scale(1.08)' : 'scale(1)',
           opacity: phase === 'exit' ? 0 : 1,
